@@ -554,8 +554,8 @@ open class SearchTextField: UITextField {
 
 extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.isHidden = !interactedWith || (filteredResults.count == 0)
-        shadowView?.isHidden = !interactedWith || (filteredResults.count == 0)
+        tableView.isHidden = !interactedWith || (filteredResults.count == 0) || !isFirstResponder
+        shadowView?.isHidden = !interactedWith || (filteredResults.count == 0)  || !isFirstResponder
         
         if maxNumberOfResults > 0 {
             return min(filteredResults.count, maxNumberOfResults)
